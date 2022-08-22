@@ -1,3 +1,4 @@
 SELECT name, email, id, cohort_id
   FROM students
- WHERE students.email NOT LIKE '%@gmail.com';
+ WHERE students.email NOT LIKE '%@gmail.com'
+   AND students.phone IS NULL;
