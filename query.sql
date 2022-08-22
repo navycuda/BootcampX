@@ -17,4 +17,5 @@ SELECT students.name AS student, count(assignment_submissions.*) as total_submis
 FROM assignment_submissions
 JOIN students ON students.id = assignment_submissions.student_id
 WHERE students.end_date IS NULL
+HAVING total_submissions < 100
 GROUP BY students.name;
