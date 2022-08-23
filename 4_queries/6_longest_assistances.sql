@@ -15,4 +15,5 @@ JOIN
 GROUP BY 
   cohorts.name
 ORDER BY
-  average_assistance_time;
+  average_assistance_time
+  DESC;
