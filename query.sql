@@ -20,10 +20,15 @@
 -- GROUP BY students.name
 -- HAVING count(assignment_submissions.*) < 100;
 
-SELECT (
-  SELECT count(assignments)
-  FROM assignments
-)-count(assignment_submissions) as total_incomplete
-FROM assignment_submissions
-JOIN students ON assignment_submissions.student_id = students.id
-WHERE students.name = 'Ibrahim Schimmel';
+-- SELECT (
+--   SELECT count(assignments)
+--   FROM assignments
+-- )-count(assignment_submissions) as total_incomplete
+-- FROM assignment_submissions
+-- JOIN students ON assignment_submissions.student_id = students.id
+-- WHERE students.name = 'Ibrahim Schimmel';
+
+SELECT avg(count(students))
+FROM students
+JOIN cohorts ON cohorts.id = students.cohort_id
+GROUP BY cohorts;
