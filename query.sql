@@ -28,7 +28,7 @@
 -- JOIN students ON assignment_submissions.student_id = students.id
 -- WHERE students.name = 'Ibrahim Schimmel';
 
-SELECT avg(count(students))
+SELECT count(students) AS total_students
 FROM students
 JOIN cohorts ON cohorts.id = students.cohort_id
 GROUP BY cohorts;
