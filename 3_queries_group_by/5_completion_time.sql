@@ -4,5 +4,6 @@ FROM students
 JOIN cohorts ON cohorts.id = students.cohort_id
 JOIN assignment_submissions ON students.id = assignment_submissions.student_id
 JOIN assignments ON assignment_submissions.assignment_id = assignments.id
-GROUP BY cohorts.name
+WHERE students.end_date IS NULL
+GROUP BY students.name
 ORDER BY average_assignment_duration DESC;
