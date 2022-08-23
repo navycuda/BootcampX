@@ -30,8 +30,8 @@
 
 SELECT avg(total_students) AS average_students
 FROM (
-  SELECT count(students) as total_students
+  SELECT count(students) as total_students, cohorts.name AS cohort_name
   FROM students
   JOIN cohorts ON cohorts.id = students.cohort_id
-  GROUP BY cohorts
+  GROUP BY cohorts.name
 ) AS totals_table;
