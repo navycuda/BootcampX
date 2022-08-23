@@ -1,8 +1,8 @@
 -- 3_queries_group_by/5_completion_time.sql
-SELECT name AS student, AVG(assignment.duration) average_assignment_duration
-FROM cohorts
-JOIN students ON cohorts.id = students.cohort_id
+SELECT students.name AS student, AVG(assignments.duration) average_assignment_duration
+FROM students
+JOIN cohorts ON cohorts.id = students.cohort_id
 JOIN assignment_submissions ON students.id = assignment_submissions.student_id
 JOIN assignments ON assignment_submissions.assignment_id = assignments.id
-GROUP BY cohort
+GROUP BY cohorts.name
 ORDER BY average_assignment_duration DESC;
