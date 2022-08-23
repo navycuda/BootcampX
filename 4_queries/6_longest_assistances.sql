@@ -1,7 +1,7 @@
 /*
 \i 4_queries/6_longest_assistances.sql
 */
-SELECT 
+SELECT
   cohorts.name AS name,
   avg(assistance_requests.completed_at - assistance_requests.started_at) AS average_assistance_time
 FROM 
@@ -16,4 +16,6 @@ GROUP BY
   cohorts.name
 ORDER BY
   average_assistance_time
-  DESC;
+  DESC
+LIMIT
+  1;
