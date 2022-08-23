@@ -1,3 +1,4 @@
 -- 1_assignements_per_day.sql
 SELECT day 
-FROM assignments;
+FROM assignments
+GROUP BY day;
