@@ -28,7 +28,10 @@
 -- JOIN students ON assignment_submissions.student_id = students.id
 -- WHERE students.name = 'Ibrahim Schimmel';
 
-SELECT count(students) AS total_students
-FROM students
-JOIN cohorts ON cohorts.id = students.cohort_id
-GROUP BY cohorts;
+SELECT avg(total_students) AS average_students
+FROM (
+  SELECT count(students) as total_students
+  FROM students
+  JOIN cohorts ON cohorts.id = students.cohort_id
+  GROUP BY cohorts
+) AS totals_table;
