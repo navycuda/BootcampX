@@ -4,16 +4,16 @@
 SELECT
   teachers.name AS teacher,
   students.name AS student,
-  assignment_submissions.duration AS duration,
+  assistance_requests.completed_at - assistance_requests.started_at AS duration,
   assignments.name AS assignment
 FROM
-  assignment_submissions
+  assistance_requests
 JOIN
   students
-  ON assignment_submissions.student_id = students.id
+  ON assistance_requests.student_id = students.id
 JOIN
   assignments
-  ON assignment_submissions.assignment_id = assignments.id
+  ON assistance_requests.assignment_id = assignments.id
 JOIN
   teachers
-  ON assignment_submissions.teacher_id = teachers.id;
+  ON assistance_requests.teacher_id = teachers.id;
