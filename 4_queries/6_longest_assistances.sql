@@ -15,6 +15,6 @@ JOIN
 GROUP BY 
   cohorts.name
 HAVING
-  average_assistance_time = (
+  avg(assistance_requests.completed_at - assistance_requests.started_at) = (
     SELECT max(average_assistance_time)
   );
