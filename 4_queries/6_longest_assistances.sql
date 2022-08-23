@@ -14,5 +14,5 @@ JOIN
   ON students.id = assistance_requests.student_id
 GROUP BY 
   cohorts.name
-HAVING
-  max(average_assistance_time);
+ORDER BY
+  average_assistance_time;
