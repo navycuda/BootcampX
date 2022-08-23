@@ -3,7 +3,7 @@
 */
 SELECT 
   cohorts.name AS name,
-  max(assistance_requests.completed_at - assistance_requests.started_at) AS average_assistance_time
+  avg(assistance_requests.completed_at - assistance_requests.started_at) AS average_assistance_time
 FROM 
   cohorts
 JOIN
@@ -14,5 +14,7 @@ JOIN
   ON students.id = assistance_requests.student_id
 GROUP BY 
   cohorts.name
-ORDER BY
-  average_assistance_time;
+HAVING
+  average_assistance_time = (
+    SELECT max(average_assistance_time)
+  );
