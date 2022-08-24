@@ -1,6 +1,5 @@
 /*
 \i 4_queries/C_teachers_that_assisted.sql
-*/
 SELECT 
   teachers.name,
   cohorts.name
@@ -18,4 +17,5 @@ JOIN
 WHERE
   cohorts.name = 'JUL02'
 GROUP BY
-  teachers.name;
+  cohorts.name;
+*/
