@@ -1,6 +1,5 @@
 /*
 \i 4_queries/A_most_confusing_assignments.sql
-*/
 SELECT 
   assignments.id,
   assignments.name,
@@ -31,3 +30,5 @@ FROM (
       total_duration
   ) AS total_durations
 ) AS total_durations;
+*/
+
