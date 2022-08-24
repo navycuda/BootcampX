@@ -8,4 +8,4 @@ SELECT
 FROM
   assignments
 GROUP BY
-  assignmnets.day;
+  assignments.day;
