@@ -12,6 +12,8 @@ JOIN
 JOIN
   assistance_requests
   ON students.id = assistance_requests.student_id
+GROUP BY
+  cohorts.name
 ORDER BY
   total_duration
   DESC;
