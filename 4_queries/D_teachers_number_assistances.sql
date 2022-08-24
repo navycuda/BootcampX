@@ -18,5 +18,8 @@ JOIN
   ON  students.cohort_id = cohorts.id
 WHERE
   cohorts.name = 'JUL02'
+GROUP BY
+  teacher,
+  cohort
 ORDER BY
   teacher;
