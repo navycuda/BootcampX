@@ -22,9 +22,12 @@ FROM (
     JOIN
       cohorts
       ON students.cohort_id = cohorts.id
+    JOIN
+      assignments
+      ON assistance_requests.assignment_id = assignments.id
     GROUP BY
       cohorts.name
     ORDER BY
       total_duration
   ) AS total_durations
-) AS total_durations
+) AS total_durations;
