@@ -36,7 +36,7 @@ SELECT
   assignments.id,
   assignments.name,
   assignments.day,
-  assignmnets.chapter,
+  assignments.chapter,
   count(assistance_requests) AS total_requests
 FROM
   assignments
