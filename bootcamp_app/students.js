@@ -30,32 +30,34 @@ const pool = new Pool({
 //   })
 //   .catch(error => console.error('query error', error.stack));
 
-const query = `
-  SELECT
-    students.id,
-    students.name,
-    cohorts.name AS cohort
-  FROM
-    students
-  JOIN
-    cohorts
-    ON students.cohort_id = cohorts.id
-  WHERE
-    cohorts.name LIKE $1
-  LIMIT
-    $2
-  ;
-`;
+// const query = `
+//   SELECT
+//     students.id,
+//     students.name,
+//     cohorts.name AS cohort
+//   FROM
+//     students
+//   JOIN
+//     cohorts
+//     ON students.cohort_id = cohorts.id
+//   WHERE
+//     cohorts.name LIKE $1
+//   LIMIT
+//     $2
+//   ;
+// `;
 
-const vars = [
-  args[0] + '%',
-  Number(args[1])
-];
+// const vars = [
+//   args[0] + '%',
+//   Number(args[1])
+// ];
 
 pool.query(query, vars)
   .then((response) => {
     response.rows.forEach((user) => {
-      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`);
+      // console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`);
+    
+    
     });
   })
   .catch((error) => {
