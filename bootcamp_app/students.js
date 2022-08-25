@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+const args = process.argv.slice(2);
 
 const pool = new Pool({
   user: 'navycuda',
@@ -28,5 +29,19 @@ pool.query(`
     });
   })
   .catch(error => console.error('query error', error.stack));
+
+const query = `
+  SELECT
+
+`;
+pool.query(query, args)
+  .then((response) => {
+    response.rows.forEach((user) => {
+      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort_name} cohort`)
+    });
+  })
+  .catch((error) => {
+    console.error(`query error`, error.stack);
+  });
 
 pool.end();
