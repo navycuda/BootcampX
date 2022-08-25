@@ -1,6 +1,8 @@
 const { Pool } = require('pg');
 const args = process.argv.slice(2);
 
+console.log('args: ', args);
+
 const pool = new Pool({
   user: 'navycuda',
   password: '123',
@@ -41,15 +43,21 @@ const query = `
     cohorts
     ON students.cohort_id = cohorts.id
   WHERE
-    cohorts.name LIKE '$1%'
+    cohorts.name LIKE $1
   LIMIT
     $2
   ;
 `;
-pool.query(query, args)
+
+const vars = [
+  args[0] + '%',
+  Number(args[1])
+];
+
+pool.query(query, vars)
   .then((response) => {
     response.rows.forEach((user) => {
-      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`)
+      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`);
     });
   })
   .catch((error) => {
