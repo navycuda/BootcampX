@@ -32,12 +32,24 @@ pool.query(`
 
 const query = `
   SELECT
-
+    users.id,
+    users.name,
+    cohorts.name AS cohort
+  FROM
+    users
+  JOIN
+    cohorts
+    ON users.cohort_id = cohorts.id
+  WHERE
+    cohorts.name LIKE '$1%'
+  LIMIT
+    $2
+  ;
 `;
 pool.query(query, args)
   .then((response) => {
     response.rows.forEach((user) => {
-      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort_name} cohort`)
+      console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`)
     });
   })
   .catch((error) => {
