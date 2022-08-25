@@ -19,6 +19,9 @@ pool.query(`
   ;
 `)
   .then(response => {
-    console.log(response);
+    console.log(response.rows);
   })
   .catch(error => console.error('query error', error.stack));
+
+
+pool.end();
