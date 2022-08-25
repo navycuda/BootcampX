@@ -11,9 +11,12 @@ pool.query(`
   SELECT
     id,
     name,
-    cohort_id
+    cohorts.name AS cohort
   FROM
     students
+  JOIN
+    cohorts
+    ON students.cohort_id = cohorts.id
   LIMIT
     5
   ;
