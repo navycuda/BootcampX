@@ -81,8 +81,7 @@ pool.query(query, vars)
   .then((response) => {
     response.rows.forEach((user) => {
       // console.log(`${user.name} has an id of ${user.id} and was in the ${user.cohort} cohort`);
-    
-    
+      console.log(`${user.cohort_id}: ${user.teacher}`);
     });
   })
   .catch((error) => {
