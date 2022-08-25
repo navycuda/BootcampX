@@ -1,8 +1,6 @@
 const { Pool } = require('pg');
 const args = process.argv.slice(2);
 
-console.log('args: ', args);
-
 const pool = new Pool({
   user: 'navycuda',
   password: '123',
