@@ -22,9 +22,11 @@ pool.query(`
   ;
 `)
   .then(response => {
-    console.log(response.rows);
+    // console.log(response.rows);
+    response.rows.forEach((user) => {
+      console.log(`${user.name} has an id of ${user.student_id} and was in the ${user.cohort} cohort`);
+    });
   })
   .catch(error => console.error('query error', error.stack));
-
 
 pool.end();
