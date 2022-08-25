@@ -52,6 +52,31 @@ const pool = new Pool({
 //   Number(args[1])
 // ];
 
+const query = `
+  SELECT DISTINCT
+    teachers.name AS teacher,
+    cohorts.name as cohort_id
+  FROM
+    teachers
+  JOIN
+    assistance_requests
+    ON teachers.id = assistance_requests.teacher_id
+  JOIN
+    students
+    ON assistance_requests.student_id = students.id
+  JOIN
+    cohorts
+    ON students.cohort_id = cohorts.id
+  WHERE
+    cohorts.name = $1
+  ORDER BY
+    teacher
+  ;
+`;
+const vars = [
+  args[0]
+];
+
 pool.query(query, vars)
   .then((response) => {
     response.rows.forEach((user) => {
