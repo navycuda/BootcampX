@@ -9,8 +9,8 @@ const pool = new Pool({
 
 pool.query(`
   SELECT
-    id,
-    name,
+    students.id,
+    students.name,
     cohorts.name AS cohort
   FROM
     students
