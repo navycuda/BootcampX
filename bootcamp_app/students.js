@@ -32,14 +32,14 @@ pool.query(`
 
 const query = `
   SELECT
-    users.id,
-    users.name,
+    students.id,
+    students.name,
     cohorts.name AS cohort
   FROM
-    users
+    students
   JOIN
     cohorts
-    ON users.cohort_id = cohorts.id
+    ON students.cohort_id = cohorts.id
   WHERE
     cohorts.name LIKE '$1%'
   LIMIT
